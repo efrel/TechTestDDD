@@ -1,7 +1,9 @@
-﻿namespace TechTestDDD.Application.Common.Interfaces.Authentication
+﻿using TechTestDDD.Domain.Entities;
+
+namespace TechTestDDD.Application.Common.Interfaces.Authentication
 {
     public interface IJwtTokenGenerator
     {
-        string GenerateToken(Guid Id, string firstName, string lastName);
+        string GenerateToken(User user);
     }
 }

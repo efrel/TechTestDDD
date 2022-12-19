@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Text;
 using TechTestDDD.Application.Common.Interfaces.Authentication;
 using TechTestDDD.Application.Common.Interfaces.Services;
+using TechTestDDD.Domain.Entities;
 
 namespace TechTestDDD.Infrastructure.Authentication
 {
@@ -20,7 +21,7 @@ namespace TechTestDDD.Infrastructure.Authentication
             _jwtSettings = jwtSettings.Value;
         }
 
-        public string GenerateToken(int Id, string firstName, string lastName)
+        public string GenerateToken(User user)
         {
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(
@@ -29,9 +30,9 @@ namespace TechTestDDD.Infrastructure.Authentication
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.GivenName, firstName),
-                new Claim(JwtRegisteredClaimNames.FamilyName, lastName),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
+                new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -44,5 +45,6 @@ namespace TechTestDDD.Infrastructure.Authentication
 
             return new JwtSecurityTokenHandler().WriteToken(securityToken);
         }
+
     }
 }

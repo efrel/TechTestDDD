@@ -1,7 +1,7 @@
 ﻿namespace TechTestDDD.Contracts.Authentication
 {
     public record AuthenticationResponse(
-        int Id,
+        Guid Id,
         string FirstName,
         string LastName,
         string Email,

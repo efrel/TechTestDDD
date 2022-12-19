@@ -1,5 +1,7 @@
-﻿using TechTestDDD.Application.Common.Interfaces.Authentication;
+﻿using ErrorOr;
+using TechTestDDD.Application.Common.Interfaces.Authentication;
 using TechTestDDD.Application.Common.Interfaces.Persistence;
+using TechTestDDD.Domain.Common.Errors;
 using TechTestDDD.Domain.Entities;
 
 namespace TechTestDDD.Application.Services.Authentication
@@ -15,22 +17,34 @@ namespace TechTestDDD.Application.Services.Authentication
             _userRepository = userRepository;
         }
 
-        public AuthenticationResult Login(string email, string password)
+        public ErrorOr<AuthenticationResult> Login(string email, string password)
         {
+            // verifica si existe el usuario
+            if (_userRepository.GetUserByEmail(email) is not User user)
+            {
+                return Errors.Authentication.InvalidCredentials;
+            }
+
+            // validar que la contraseña es correcta
+            if(user.Password != password)
+            {
+                return Errors.Authentication.InvalidCredentials;
+            }
+
+            // crear Token
+            var token = _jwtTokenGenerator.GenerateToken(user);
+
             return new AuthenticationResult(
-                Guid.NewGuid(),
-                "firstName",
-                "lastName",
-                email,
-                "token");
+                user,
+                token);
         }
 
-        public AuthenticationResult Register(string firstName, string lastName, string email, string password)
+        public ErrorOr<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
         {
             // verifica si existe el usuario
             if(_userRepository.GetUserByEmail(email) is not null)
             {
-                throw new Exception("Usuario con ese correo ya existe.");
+                return Errors.User.DuplicateEmail;
             }
 
             // crear un nuevo usuario
@@ -45,13 +59,10 @@ namespace TechTestDDD.Application.Services.Authentication
             _userRepository.Add(user);
 
             // crear JWT Token
-            var token = _jwtTokenGenerator.GenerateToken(user.Id, firstName, lastName);
+            var token = _jwtTokenGenerator.GenerateToken(user);
 
             return new AuthenticationResult(
-                user.Id,
-                firstName,
-                lastName,
-                email,
+                user,
                 token);
         }
     }
