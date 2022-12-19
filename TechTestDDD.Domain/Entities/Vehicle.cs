@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TechTestDDD.Domain.Entities
+﻿namespace TechTestDDD.Domain.Entities
 {
-    internal class Vehicle
+    public class Vehicle
     {
+        public int Id { get; set; }
+        public double Year { get; set;}
+        public string County { get; set; }
+        public double VehicleMiles { get; set; }
+        public string Country { get; set; }
+        public string State { get; set; }
     }
 }

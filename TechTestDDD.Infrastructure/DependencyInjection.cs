@@ -26,6 +26,9 @@ namespace TechTestDDD.Infrastructure
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
+            services.AddSingleton<IVehicleBasicRepository, VehicleRepository>();
+            services.AddSingleton<IVehicleAvanRepository, VehicleRepository>();
+
             services.AddScoped<IUserRepository, UserRepository>();
 
             return services;

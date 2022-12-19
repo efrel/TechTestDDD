@@ -33,23 +33,14 @@ namespace TechTestDDD.Api.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterRequest request)
         {
-            try
-            {
-                var command = _mapper.Map<RegisterCommand>(request);
+            var command = _mapper.Map<RegisterCommand>(request);
 
-                ErrorOr<AuthenticationResult> authResult = await _mediator.Send(command);
+            ErrorOr<AuthenticationResult> authResult = await _mediator.Send(command);
 
-                return authResult.Match(
-                    authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
-                    errors => Problem(errors)
-                );
-            }
-            catch(Exception ex)
-            {
-                return Problem(
-                   statusCode: StatusCodes.Status400BadRequest,
-                    title: ex.Message);
-            }
+            return authResult.Match(
+                authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
+                errors => Problem(errors)
+            );
         }
 
         /// <summary>
@@ -60,29 +51,20 @@ namespace TechTestDDD.Api.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginRequest request)
         {
-            try
-            {
-                var query = _mapper.Map<LoginQuery>(request);
-                ErrorOr<AuthenticationResult> authResult = await _mediator.Send(query);
+            var query = _mapper.Map<LoginQuery>(request);
+            ErrorOr<AuthenticationResult> authResult = await _mediator.Send(query);
 
-                if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
-                {
-                    return Problem(
-                        statusCode: StatusCodes.Status401Unauthorized,
-                         title: authResult.FirstError.Description);
-                }
-
-                return authResult.Match(
-                    authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
-                    errors => Problem(errors)
-                );
-            }
-            catch(Exception ex)
+            if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
             {
                 return Problem(
-                   statusCode: StatusCodes.Status400BadRequest,
-                    title: ex.Message);
+                    statusCode: StatusCodes.Status401Unauthorized,
+                        title: authResult.FirstError.Description);
             }
+
+            return authResult.Match(
+                authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
+                errors => Problem(errors)
+            );
         }
     }
 }
