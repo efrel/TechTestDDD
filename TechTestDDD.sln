@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTestDDD.Api", "TechTestDDD.Api\TechTestDDD.Api.csproj", "{39E9CA72-5F24-4EC2-B25E-56C62BFCAA7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechTestDDD.Api", "TechTestDDD.Api\TechTestDDD.Api.csproj", "{39E9CA72-5F24-4EC2-B25E-56C62BFCAA7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTestDDD.Domain", "TechTestDDD.Domain\TechTestDDD.Domain.csproj", "{F9166605-FDD9-4F12-91E7-EB6A05A06192}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTestDDD.Application", "TechTestDDD.Application\TechTestDDD.Application.csproj", "{A6F1136D-BA69-4CB4-8A85-06C89B63C2C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTestDDD.Infrastructure", "TechTestDDD.Infrastructure\TechTestDDD.Infrastructure.csproj", "{6D587F9F-6A90-48A7-AAEF-C9BF77E42182}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechTestDDD.Contracts", "TechTestDDD.Contracts\TechTestDDD.Contracts.csproj", "{5E2013FA-6819-4F0E-987D-04FCBE900326}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{39E9CA72-5F24-4EC2-B25E-56C62BFCAA7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39E9CA72-5F24-4EC2-B25E-56C62BFCAA7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39E9CA72-5F24-4EC2-B25E-56C62BFCAA7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9166605-FDD9-4F12-91E7-EB6A05A06192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9166605-FDD9-4F12-91E7-EB6A05A06192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9166605-FDD9-4F12-91E7-EB6A05A06192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9166605-FDD9-4F12-91E7-EB6A05A06192}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6F1136D-BA69-4CB4-8A85-06C89B63C2C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6F1136D-BA69-4CB4-8A85-06C89B63C2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6F1136D-BA69-4CB4-8A85-06C89B63C2C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6F1136D-BA69-4CB4-8A85-06C89B63C2C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D587F9F-6A90-48A7-AAEF-C9BF77E42182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D587F9F-6A90-48A7-AAEF-C9BF77E42182}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D587F9F-6A90-48A7-AAEF-C9BF77E42182}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D587F9F-6A90-48A7-AAEF-C9BF77E42182}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E2013FA-6819-4F0E-987D-04FCBE900326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2013FA-6819-4F0E-987D-04FCBE900326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2013FA-6819-4F0E-987D-04FCBE900326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2013FA-6819-4F0E-987D-04FCBE900326}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
