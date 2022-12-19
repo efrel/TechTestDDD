@@ -5,7 +5,7 @@ using TechTestDDD.Application.Authentication.Common;
 namespace TechTestDDD.Application.Authentication.Commands.Register
 {
     public record RegisterCommand(
-        string FirsName, 
+        string FirstName, 
         string LastName, 
         string Email, 
         string Password): IRequest<ErrorOr<AuthenticationResult>>;

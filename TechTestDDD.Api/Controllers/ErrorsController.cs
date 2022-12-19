@@ -7,8 +7,8 @@ namespace TechTestDDD.Api.Controllers
     
     public class ErrorsController : ControllerBase
     {
-        [Route("/error")]
         [HttpGet]
+        [Route("/error")]
         public IActionResult Error()
         {
             Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;

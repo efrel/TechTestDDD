@@ -1,4 +1,5 @@
 ﻿using ErrorOr;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TechTestDDD.Api.Common.Http;
@@ -6,6 +7,7 @@ using TechTestDDD.Api.Common.Http;
 namespace TechTestDDD.Api.Controllers
 {
     [ApiController]
+    [Authorize]
     public class ApiController : ControllerBase
     {
         protected IActionResult Problem(List<Error> errors)

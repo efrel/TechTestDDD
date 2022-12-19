@@ -29,6 +29,8 @@ namespace TechTestDDD.Application.Authentication.Queries.Login
             LoginQuery query, 
             CancellationToken cancellationToken)
         {
+            await Task.CompletedTask;
+
             // verifica si existe el usuario
             if (_userRepository.GetUserByEmail(query.Email) is not User user)
             {

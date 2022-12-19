@@ -24,6 +24,8 @@ namespace TechTestDDD.Application.Authentication.Commands.Register
             RegisterCommand command, 
             CancellationToken cancellationToken)
         {
+            await Task.CompletedTask;
+
             // verifica si existe el usuario
             if (_userRepository.GetUserByEmail(command.Email) is not null)
             {
@@ -33,7 +35,7 @@ namespace TechTestDDD.Application.Authentication.Commands.Register
             // crear un nuevo usuario
             var user = new User
             {
-                FirstName = command.FirsName,
+                FirstName = command.FirstName,
                 LastName = command.LastName,
                 Email = command.Email,
                 Password = command.Password
