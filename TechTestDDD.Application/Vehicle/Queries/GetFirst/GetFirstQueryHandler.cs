@@ -27,11 +27,12 @@ namespace TechTestDDD.Application.Vehicle.Queries.GetList
             CancellationToken cancellationToken)
         {
             if(query.Id == 0)
-            {
                 return Errors.Vehicle.Validation;
-            }
 
             var response = await _vehicleBasicRepository.GetVehicleById(query.Id);
+
+            if(response == null)
+                return Errors.Vehicle.NotFound;
 
             return new VehicleResult(response);
         }

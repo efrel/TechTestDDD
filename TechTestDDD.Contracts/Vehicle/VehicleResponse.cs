@@ -8,9 +8,9 @@ namespace TechTestDDD.Contracts.Vehicle
 {
     public record VehicleResponse(
         int Id,
-        double Year,
+        float Year,
         string County,
-        double VehicleMiles,
+        float VehicleMiles,
         string Country,
         string State);
 }

@@ -30,17 +30,17 @@ namespace TechTestDDD.Application.Vehicle.Commands.DeleteVehicle
             CancellationToken cancellationToken)
         {
             // valida si el campo tiene datos validados
-            if (command.Id == 0)
+            if (command.Vehicle is not Domain.Entities.Vehicle Vehicle)
                 return Errors.Vehicle.Validation;
 
             // busca si existe el registro que desea modificar
-            var response = await _vehicleBasicRepository.GetVehicleById(command.Id);
+            var response = await _vehicleBasicRepository.GetVehicleById(command.Vehicle.Id);
 
             if (response == null)
-                return Errors.Vehicle.Conflict;
+                return Errors.Vehicle.NotFound;
 
             // elimina el registro que corresponde al id enviado
-            var updateRes = await _vehicleAvanRepository.UpdateVehicleById(command.Vehicle, command.Id);
+            var updateRes = await _vehicleAvanRepository.UpdateVehicleById(command.Vehicle);
 
             return new VehicleResult(updateRes);
         }

@@ -13,6 +13,10 @@ namespace TechTestDDD.Domain.Common.Errors
             public static Error Conflict => Error.Conflict(
                 code: "Vehicle.Conflict",
                 description: "No existe el registro que busca.");
+
+            public static Error NotFound => Error.NotFound(
+                code: "Vehicle.NotFound",
+                description: "No se encontro el registro que busca.");
         }
     }
 }

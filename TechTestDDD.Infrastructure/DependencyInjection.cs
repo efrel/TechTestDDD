@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System.Data.SqlClient;
+using System.Data;
 using System.Text;
 using TechTestDDD.Application.Common.Interfaces.Authentication;
 using TechTestDDD.Application.Common.Interfaces.Persistence;
@@ -19,6 +21,10 @@ namespace TechTestDDD.Infrastructure
             this IServiceCollection services, 
             ConfigurationManager configuration)
         {
+            string dbConnectionString = configuration.GetConnectionString("DB");
+
+            services.AddTransient<IDbConnection>((sp) => new SqlConnection(dbConnectionString));
+
             services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
 
             services.AddAuth(configuration);

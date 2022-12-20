@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace TechTestDDD.Contracts.Vehicle
 {
-    internal class VehicleRequest
-    {
-    }
+    public record GetFirstRequest(int Id);
 }

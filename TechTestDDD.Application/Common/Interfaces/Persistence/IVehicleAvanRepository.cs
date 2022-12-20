@@ -11,6 +11,6 @@ namespace TechTestDDD.Application.Common.Interfaces.Persistence
     {
         Task DeleteVehicle(int Id);
 
-        Task<Domain.Entities.Vehicle> UpdateVehicleById(Domain.Entities.Vehicle vehicle, int id);
+        Task<Domain.Entities.Vehicle> UpdateVehicleById(Domain.Entities.Vehicle vehicle);
     }
 }

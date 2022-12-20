@@ -6,5 +6,12 @@ using System.Threading.Tasks;
 
 namespace TechTestDDD.Contracts.Vehicle
 {
-    public record UpdateVehicleRequest(Domain.Entities.Vehicle Vehicle, int Id);
+    public record UpdateVehicleRequest(
+        int Id,
+        float Year,
+        string County,
+        float VehicleMiles,
+        string Country,
+        string State
+    );
 }

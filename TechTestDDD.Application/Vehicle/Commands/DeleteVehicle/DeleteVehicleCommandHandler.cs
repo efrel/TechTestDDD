@@ -37,7 +37,7 @@ namespace TechTestDDD.Application.Vehicle.Commands.DeleteVehicle
             var response = await _vehicleBasicRepository.GetVehicleById(command.Id);
 
             if (response == null)
-                return Errors.Vehicle.Conflict;
+                return Errors.Vehicle.NotFound;
 
             // elimina el registro que corresponde al id enviado
             await _vehicleAvanRepository.DeleteVehicle(command.Id);
